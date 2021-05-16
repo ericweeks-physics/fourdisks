@@ -12,19 +12,19 @@ evolvefour07.pro -- main IDL program implementing the Brownian dynamics code.  C
 
 a = evolvefour07(epsilon,circs,steps,DIFFN=DIFFN,SAVESTEPS=SAVESTEPS,TEMP=TEMP,NOINIT=NOINIT,SEED=SEED,FILENAME=FILENAME,MORESTEPS=MORESTEPS,TRAJSAVE=TRAJSAVE,NOPLOT=NOPLOT,NOPIC=NOPIC)
 
-epsilon:  size of arena.  Required.  Typical values are 0.1 to 1.0.
-circs:  could be an empty variable.  If set, this should be a 2x4 array with initial positions of circles (disks)
-steps:  how many steps to simulate.  In general the program wants this to be a long integer, and should be at least 200000L and probably better to be 1000000L (one million) as some free energy calculations are only done intermittently.
-DIFFN:  size of diffusion constant.  1e-4 by default.  I often used 1e-5.
-SAVESTEPS:  how often to save the trajectory.  I usually used 1000L, but for the smaller epsilons for which disk rearrangements occurred infrequently, I would make this 10000L or 20000L.
-TEMP:  undocumented/untested feature, the program can use this as a temperature.  This treats particles as soft disks that have an (overlap^6) potential energy.  Mostly this is leftover from Du and Weeks, PRE 2016 code that dealt with soft particles.  I have not tested this with four disks.  I usually set temperature = -1.0 for safety's sake, to make sure the soft disk code is completely ignored.
-NOINIT:  Use /NOINIT if you want to use the user-defined initial positions in the 'circ' variable.  Otherwise, even if you provide initial positions in 'circ', they will be overruled by the program.
-SEED:  used for the random number generator.
-FILENAME:  set this as a suffix, if you want to save the data in a variety of files (see below)
-MORESTEPS:  Usually I told the program to do 1000000000L steps (1e9) but if I wanted a larger number, I used moresteps.  MORESTEPS=2 would do twice as many.  For the smallest values of epsilon, I might do steps=1e9 and moresteps=20L, which might take several weeks to complete.
-TRAJSAVE:  Use /trajsave to write out the trajectory data.  Otherwise, just saves the free energy data.
-NOPLOT:  /noplot to not plot various quantities as the program runs
-NOPIC:  /nopic to not display a picture related to a free energy landscape as the program runs
+* epsilon:  size of arena.  Required.  Typical values are 0.1 to 1.0.
+* circs:  could be an empty variable.  If set, this should be a 2x4 array with initial positions of circles (disks)
+* steps:  how many steps to simulate.  In general the program wants this to be a long integer, and should be at least 200000L and probably better to be 1000000L (one million) as some free energy calculations are only done intermittently.
+* DIFFN:  size of diffusion constant.  1e-4 by default.  I often used 1e-5.
+* SAVESTEPS:  how often to save the trajectory.  I usually used 1000L, but for the smaller epsilons for which disk rearrangements occurred infrequently, I would make this 10000L or 20000L.
+* TEMP:  undocumented/untested feature, the program can use this as a temperature.  This treats particles as soft disks that have an (overlap^6) potential energy.  Mostly this is leftover from Du and Weeks, PRE 2016 code that dealt with soft particles.  I have not tested this with four disks.  I usually set temperature = -1.0 for safety's sake, to make sure the soft disk code is completely ignored.
+* NOINIT:  Use /NOINIT if you want to use the user-defined initial positions in the 'circ' variable.  Otherwise, even if you provide initial positions in 'circ', they will be overruled by the program.
+* SEED:  used for the random number generator.
+* FILENAME:  set this as a suffix, if you want to save the data in a variety of files (see below)
+* MORESTEPS:  Usually I told the program to do 1000000000L steps (1e9) but if I wanted a larger number, I used moresteps.  MORESTEPS=2 would do twice as many.  For the smallest values of epsilon, I might do steps=1e9 and moresteps=20L, which might take several weeks to complete.
+* TRAJSAVE:  Use /trajsave to write out the trajectory data.  Otherwise, just saves the free energy data.
+* NOPLOT:  /noplot to not plot various quantities as the program runs
+* NOPIC:  /nopic to not display a picture related to a free energy landscape as the program runs
 
 Files that this program saves:
 * ab.filename:  
